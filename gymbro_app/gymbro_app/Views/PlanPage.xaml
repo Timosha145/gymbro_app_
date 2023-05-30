@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="gymbro_app.Views.PlanPage"
+             xmlns:vm="clr-namespace:gymbro_app.ViewModels">
+    
+    <ContentPage.BindingContext>
+        <vm:PlanViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout x:Name="stackLayout" Orientation="Horizontal" HorizontalOptions="Center">
+            <CollectionView x:Name="collectionView" WidthRequest="352.5">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="2" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="10">
+                            <Grid>
+                                <Frame CornerRadius="30" Padding="0" IsClippedToBounds="True">
+                                    <RelativeLayout BackgroundColor="#E2E2E2" HeightRequest="210">
+                                        <Image Source="{Binding ImageSource}" Aspect="Fill"/>
+                                        <StackLayout AutomationId="{Binding Id}" BackgroundColor="Black" TranslationY="165" Opacity=".8" Padding="10,5,10,20" HeightRequest="300">
+                                            <Label TextColor="White" FontSize="Large" Text="{Binding Name}" WidthRequest="140" HorizontalTextAlignment="Center"/>
+                                        </StackLayout>
+                                    </RelativeLayout>
+                                </Frame>
+                            </Grid>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

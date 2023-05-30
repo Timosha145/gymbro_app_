@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="gymbro_app.Views.DetailsPage"
+             xmlns:vm="clr-namespace:gymbro_app.ViewModels"
+             Title="{Binding Title}">
+
+    <Page.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="Large"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="TextColor" Value="white"/>
+            <Setter Property="Padding" Value="20"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="StackLayout" x:Key="detailsStackLayoutStyle">
+            <Setter Property="Orientation" Value="Horizontal"/>
+            <Setter Property="BackgroundColor" Value="#003049"/>
+        </Style>
+
+        <Style TargetType="Entry">
+            <Setter Property="TextColor" Value="LightGray"/>
+            <Setter Property="PlaceholderColor" Value="LightGray"/>
+            <Setter Property="FontAttributes" Value="Italic"/>
+            <Setter Property="WidthRequest" Value="{OnIdiom Phone='0,190'}"/>
+            <Setter Property="HorizontalOptions" Value="EndAndExpand"/>
+        </Style>
+
+    </Page.Resources>
+
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+            <StackLayout Style="{StaticResource detailsStackLayoutStyle}">
+                <Label Text="Gender :"/>
+                <Picker x:Name="genderPicker" Title="Select Gender" TitleColor="LightGray" SelectedIndexChanged="OnSelectedIndexChanged" WidthRequest="{OnIdiom Phone='0,190'}" TextColor="LightGray" FontAttributes="Italic" HorizontalOptions="EndAndExpand">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Male</x:String>
+                            <x:String>Woman</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </StackLayout>
+
+            <StackLayout Style="{StaticResource detailsStackLayoutStyle}">
+                <Label Text="Birthday :"/>
+                <DatePicker x:Name="datePicker" Date="{Binding Birthday}" TextColor="LightGray" FontAttributes="Italic" HorizontalOptions="EndAndExpand" WidthRequest="{OnIdiom Phone='0,190'}"></DatePicker>
+            </StackLayout>
+
+            <StackLayout Style="{StaticResource detailsStackLayoutStyle}">
+                <Label Text="Weight :"/>
+                <Entry x:Name="weightPicker" Placeholder="Weight" Text="{Binding BoundValue}" Keyboard="Numeric" TextChanged="OnEntryNumericChanged"/>
+            </StackLayout>
+
+            <StackLayout Style="{StaticResource detailsStackLayoutStyle}">
+                <Label Text="Height :"/>
+                <Entry x:Name="heightPicker" Placeholder="Height" Text="{Binding BoundValue}" Keyboard="Numeric" TextChanged="OnEntryNumericChanged"/>
+            </StackLayout>
+
+            <StackLayout VerticalOptions="EndAndExpand">
+                <Button x:Name="clearButton" Text="Clear all data" Clicked="OnClearButtonChanged"/>
+                <Button Text="Save" Clicked="OnSaveButtonChanged"/>
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
