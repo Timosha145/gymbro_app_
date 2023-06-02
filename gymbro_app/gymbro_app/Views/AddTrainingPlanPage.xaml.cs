@@ -37,7 +37,6 @@ namespace gymbro_app.Views
                 });
 
                 var sourcePath = _selectedImagePath;
-                var imageName = Path.GetFileNameWithoutExtension(Path.GetFileName(_selectedImagePath)) + Path.GetExtension(_selectedImagePath);
 
                 DirectoryInfo d = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
                 File.Copy(sourcePath, d.ToString(), true);      
@@ -77,7 +76,7 @@ namespace gymbro_app.Views
                         labelForImage.Text = "Change Image";
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     await DisplayAlert("Alert", "Error", "❌");
                 }

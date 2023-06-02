@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="gymbro_app.Views.AddTrainingDayPlanPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label" x:Key="label">
+                <Setter Property="FontSize" Value="Large"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="Padding" Value="20"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+
+            <Style TargetType="StackLayout" x:Key="detailsStackLayoutStyle">
+                <Setter Property="Orientation" Value="Horizontal"/>
+                <Setter Property="BackgroundColor" Value="#003049"/>
+            </Style>
+
+            <Style TargetType="Entry">
+                <Setter Property="TextColor" Value="LightGray"/>
+                <Setter Property="PlaceholderColor" Value="LightGray"/>
+                <Setter Property="FontAttributes" Value="Italic"/>
+                <Setter Property="WidthRequest" Value="190"/>
+                <Setter Property="HorizontalOptions" Value="EndAndExpand"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+            <!-- Другие элементы страницы -->
+
+            <StackLayout Style="{StaticResource detailsStackLayoutStyle}">
+                <Label Style="{StaticResource label}" Text="Weekday :"/>
+                <Picker x:Name="dayPicker" Title="Select A Weekday" TitleColor="LightGray" WidthRequest="190" TextColor="LightGray" FontAttributes="Italic" HorizontalOptions="EndAndExpand">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Monday</x:String>
+                            <x:String>Tuesday</x:String>
+                            <x:String>Wendsday</x:String>
+                            <x:String>Thursday</x:String>
+                            <x:String>Friday</x:String>
+                            <x:String>Saturday</x:String>
+                            <x:String>Sunday</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </StackLayout>
+            
+            <StackLayout Style="{StaticResource detailsStackLayoutStyle}">
+                <Label Style="{StaticResource label}" Text="Name:"/>
+                <Entry x:Name="nameEntry" Placeholder="Enter Name" TextColor="LightGray" FontAttributes="Italic" HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
+
+            <StackLayout Style="{StaticResource detailsStackLayoutStyle}">
+                <Label Style="{StaticResource label}" Text="Description:"/>
+                <Entry x:Name="descriptionEntry" Placeholder="Enter Description" TextColor="LightGray" FontAttributes="Italic" HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
+            <StackLayout WidthRequest="352.5">
+                <Grid>
+                    <Frame CornerRadius="30" Padding="0" IsClippedToBounds="True">
+                        <RelativeLayout BackgroundColor="#E2E2E2" HeightRequest="210">
+                            <Image x:Name="planImage" Source="questionmark.jpg" Aspect="Fill" WidthRequest="380" HeightRequest="210"/>
+                            <StackLayout BackgroundColor="Black" TranslationY="165" Opacity=".8" Padding="10,5,10,20" HeightRequest="300">
+                                <Label x:Name="labelForImage" TextColor="White" FontSize="Large" Text="Add Image" WidthRequest="352.5" HorizontalTextAlignment="Center"/>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnImageTapped" NumberOfTapsRequired="1"/>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                        </RelativeLayout>
+                    </Frame>
+                </Grid>
+            </StackLayout>
+
+            <StackLayout VerticalOptions="EndAndExpand">
+                <Button Text="Save" Clicked="OnSaveButtonClicked"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

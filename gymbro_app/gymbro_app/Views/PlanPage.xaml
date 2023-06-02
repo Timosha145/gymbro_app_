@@ -9,28 +9,33 @@
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
-        <StackLayout x:Name="stackLayout" Orientation="Horizontal" HorizontalOptions="Center">
-            <CollectionView x:Name="collectionView" WidthRequest="352.5">
-                <CollectionView.ItemsLayout>
-                    <GridItemsLayout Orientation="Vertical" Span="2" />
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout Padding="10">
-                            <Grid>
-                                <Frame CornerRadius="30" Padding="0" IsClippedToBounds="True">
-                                    <RelativeLayout BackgroundColor="#E2E2E2" HeightRequest="210">
-                                        <Image Source="{Binding ImageSource}" Aspect="Fill"/>
-                                        <StackLayout AutomationId="{Binding Id}" BackgroundColor="Black" TranslationY="165" Opacity=".8" Padding="10,5,10,20" HeightRequest="300">
-                                            <Label TextColor="White" FontSize="Large" Text="{Binding Name}" WidthRequest="140" HorizontalTextAlignment="Center"/>
-                                        </StackLayout>
-                                    </RelativeLayout>
-                                </Frame>
-                            </Grid>
-                        </StackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+        <StackLayout x:Name="stackLayout" Orientation="Vertical" VerticalOptions="Center">
+            <StackLayout VerticalOptions="EndAndExpand">
+                <Button x:Name="newDayButton" Text="Add A Day" Clicked="NewDay" Margin="10"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <CollectionView x:Name="collectionView" WidthRequest="352.5">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="2" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="10">
+                                <Grid>
+                                    <Frame CornerRadius="30" Padding="0" IsClippedToBounds="True">
+                                        <RelativeLayout BackgroundColor="#E2E2E2" HeightRequest="210">
+                                            <Image Source="{Binding ImagePath}" Aspect="Fill"/>
+                                            <StackLayout AutomationId="{Binding Id}" BackgroundColor="Black" TranslationY="165" Opacity=".8" Padding="10,5,10,20" HeightRequest="300">
+                                                <Label TextColor="White" FontSize="Large" Text="{Binding Day}" WidthRequest="140" HorizontalTextAlignment="Center"/>
+                                            </StackLayout>
+                                        </RelativeLayout>
+                                    </Frame>
+                                </Grid>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -12,18 +12,7 @@ namespace gymbro_app.Models
         public int ExerciceId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public Weekday Day { get; set; }
+        public string Day { get; set; }
         public string ImagePath { get; set; }
     }
-}
-
-public enum Weekday
-{
-    Monday,
-    Tuesday,
-    Wednesday,
-    Thursday,
-    Friday,
-    Saturday,
-    Sunday
 }

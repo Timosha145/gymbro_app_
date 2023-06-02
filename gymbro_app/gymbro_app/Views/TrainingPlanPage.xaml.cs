@@ -30,7 +30,9 @@ namespace gymbro_app.Views
         {
             try
             {
-                _trainingWeekPlans = await App.Database.GetTrainingWeekPlanAsync();
+                List<TrainingWeekPlan> trainingWeekPlans = new List<TrainingWeekPlan>();
+                _trainingWeekPlans = await App.Database.GetShowableTrainingWeekPlanAsync();
+
                 collectionView.ItemsSource = _trainingWeekPlans;
             }
             catch (Exception)

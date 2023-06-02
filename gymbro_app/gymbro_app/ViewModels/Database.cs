@@ -1,6 +1,7 @@
 ﻿using gymbro_app.Models;
 using SQLite;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace gymbro_app.ViewModels
@@ -40,7 +41,22 @@ namespace gymbro_app.ViewModels
             return _database.DeleteAllAsync<Person>();
         }
 
-        //TrainingPlan Table
+        //TrainingWeekPlan Table
+
+        public Task<List<TrainingWeekPlan>> GetShowableTrainingWeekPlanAsync()
+        {
+            return  _database.Table<TrainingWeekPlan>().Where(p => p.ImagePath != null).ToListAsync();
+        }
+
+        public Task<List<TrainingWeekPlan>> GetByNameTrainingWeekPlanAsync(string name)
+        {
+            return _database.Table<TrainingWeekPlan>().Where(p => p.Name == name).ToListAsync();
+        }
+
+        public Task<TrainingWeekPlan> GetByIdTrainingWeekPlanAsync(int id)
+        {
+            return _database.Table<TrainingWeekPlan>().FirstOrDefaultAsync(p => p.Id == id);
+        }
 
         public Task<List<TrainingWeekPlan>> GetTrainingWeekPlanAsync()
         {
@@ -63,6 +79,18 @@ namespace gymbro_app.ViewModels
         }
 
         //TrainingDayPlan Table
+
+        public Task<TrainingDayPlan> GetByIdTrainingDayPlanAsync(int id)
+        {
+            return _database.Table<TrainingDayPlan>().FirstOrDefaultAsync(p => p.Id == id);
+        }
+
+        public async Task<TrainingDayPlan> GetLastTrainingDayPlanAsync()
+        {
+            List<TrainingDayPlan> trainingDayPlans = await GetTrainingDayPlanAsync();
+
+            return trainingDayPlans.LastOrDefault();
+        }
 
         public Task<List<TrainingDayPlan>> GetTrainingDayPlanAsync()
         {
